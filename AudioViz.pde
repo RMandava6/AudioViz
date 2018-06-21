@@ -45,7 +45,7 @@ void setup()
   //Charger la librairie minim
   minim = new Minim(this);
  
-   songs = new Songs("/Users/raminfarhanian/Documents/Processing/Visualization/unit 6/AudioViz/Data/");
+   songs = new Songs("/Users/ramya/Documents/GitHub/AudioViz/Data/");
    loadSong(songs.getCurrent());
 }
  
@@ -369,5 +369,8 @@ void keyPressed(){
   } else if ( key == 'p'|| key == 'P'){
      song.close();
      loadSong(songs.previous()); 
+  } else if ( key == 'c'|| key == 'C'){
+     song.close();
+     //loadSong(songs.previous()); 
   }
 }
