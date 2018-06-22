@@ -36,12 +36,13 @@ Cube[] cubes;
 int nbMurs = 500;
 Mur[] murs;
  private Songs songs;
- 
+ //String s = "To be or not to be.";
+ String s;
 void setup()
 {
   //Faire afficher en 3D sur tout l'écran
-  fullScreen(P3D);
- 
+  //fullScreen(P3D);
+  size(800, 700, P3D);
   //Charger la librairie minim
   minim = new Minim(this);
  
@@ -104,7 +105,7 @@ void draw()
  
   //Faire avancer la chanson. On draw() pour chaque "frame" de la chanson...
   fft.forward(song.mix);
-  
+  s = songs.getCurrent().getName();
   //Calcul des "scores" (puissance) pour trois catégories de son
   //D'abord, sauvgarder les anciennes valeurs
   oldScoreLow = scoreLow;
@@ -214,8 +215,8 @@ void draw()
     murs[i].display(scoreLow, scoreMid, scoreHi, intensity, scoreGlobal);
   }
   
-   String s = songs.getCurrent().getName();
-   println(s);
+   //String s = songs.getCurrent().getName();
+  // println(s);
   //fill(50);
   //text(s, 100, 10, 70, 80);  // Text wraps within text box
 }
@@ -275,7 +276,7 @@ class Cube {
     
     //Application de la matrice
     popMatrix();
-    
+    text(s, 300, 650);
     //Déplacement Z
     z+= (1+(intensity/5)+(pow((scoreGlobal/150), 2)));
     
@@ -352,7 +353,7 @@ class Mur {
     //Création de la "boite"
     box(1);
     popMatrix();
-    
+    text(s, 300, 650);
     //Déplacement Z
     z+= (pow((scoreGlobal/150), 2));
     if (z >= maxZ) {
